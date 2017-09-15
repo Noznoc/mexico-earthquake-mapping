@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <meta charset=utf-8 />
+  <title>Malaria Mapping</title>
+  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
+  <link href='index.css' rel='stylesheet' />
+</head>
+
+<body>
+
+<div id="sidebar" class="sidebar pin-topleft z1">
+  <div class="sidebar-inner fill-bg dark round sidebar-inner">
+    <div class="flex-scroll scroll-styled pad4">
+      <h2>Mapping Oaxaca and Chiapas after 8.1M Earthquake</h2>
+      <p class="prose show-mobile">
+Volunteers from all over the world are contributing to help map southern Mexico after 8.1M earthquake on September 7, 2017.
+      </p>
+      <p class="prose hide-mobile">
+Volunteers from all over the world are contributing to help map southern Mexico after 8.1M earthquake on September 7, 2017.
+      </p>
+      <a class="hide-mobile button rcon next space-bottom2" href="http://tasks.hotosm.org/?sort_by=priority&direction=asc&search=mexico" style="display: inline-block;" target="_blank">Start mapping now</a>
+      <div id="counter" class="dark col3">
+        <h1 id="buildings">102869</h1>
+        <h3 class="space-bottom2"><span style="font-family: 'Open Sans', sans-serif;">buildings mapped by </span><span id="time">September 13, 2017</span></h3>
+        <div id="player" class="clearfix space-bottom">
+          <div class="contain control-container round fill-control lifted">
+            <button id="play-control" class="button playback play pin-bottomleft round-left keyline-right"></button>
+            <div class="pad1y pad2x contain round-right">
+              <input id="range" class="col12" type="range" min="0" max="433" step="1" value="0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div id="map"></div>
+  <script src='index.js'></script>
+</body>
+
+</html>
