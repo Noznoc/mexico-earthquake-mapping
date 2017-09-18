@@ -33,7 +33,7 @@ var layer = 'mexico-building-shape';
 
 var styleByDay = throttle(function (day) {
   var layers = ['mexico-building-glow', 'mexico-building-point', 'mexico-building-shape'];
-  var filter = ["<=", "@day", day];
+  var filter = ["<=", "@day", day * 24];
   if (map.loaded()) {
     layers.forEach(function(layer) {
       map.setFilter(layer, filter);
@@ -42,7 +42,7 @@ var styleByDay = throttle(function (day) {
 }, 400);
 
 var updateCounts = throttle(function(total, date) {
-  buildings.innerHTML = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  //buildings.innerHTML = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   time.innerHTML = date.format('MMM D, YYYY');
 }, 150);
 
@@ -55,6 +55,8 @@ function play(v) {
   }
   updateCounts(sum, date);
   styleByDay(v);
+
+  range.max = 10; // change range.max
 
   // If range hit's the end show play button again
   if (parseInt(range.value) >= parseInt(range.max)) {
@@ -128,7 +130,7 @@ function setPlay(speed) {
     range.value = parseInt(range.min);
   }
 
-  speed = parseInt(speed) || 200;
+  speed = parseInt(speed) || 600; // change speed of visualization
   if (playback) return clearPlayback();
   playControl.classList.remove('play');
   playControl.classList.add('pause');
@@ -178,50 +180,7 @@ function flyHandler(id, options) {
     }
   });
 }
-/*
-flyHandler('botswana', {
-  center: [22.966, -21.918],
-  zoom: 5.5,
-  startDay: 140,
-  speed: 450
-});
-flyHandler('zambia', {
-  center: [25.155, -13.605],
-  startDay: 210,
-  zoom: 5.5,
-  speed: 450
-});
-flyHandler('zimbabwe', {
-  center: [27.234, -19.072],
-  zoom: 5.5,
-  speed: 300
-});
 
-flyHandler('laos', {
-  center: [105.9620, 16.6489],
-  zoom: 8.4,
-  startDay: 90,
-  speed: 300
-});
-flyHandler('cambodia', {
-  center: [104.5779, 11.8601],
-  zoom: 7,
-  startDay: 190,
-  speed: 500
-});
-flyHandler('guatemala', {
-  center: [-91.302, 15.225],
-  startDay: 60,
-  zoom: 7.5,
-  speed: 500
-});
-flyHandler('honduras', {
-  center: [-86.214, 15.330],
-  zoom: 6.5,
-  startDay: 190,
-  speed: 500
-});
-*/
 function getQueryVariable(variable) {
     console.log(window.location.search)
     var query = window.location.search.substring(1);
