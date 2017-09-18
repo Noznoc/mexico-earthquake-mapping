@@ -56,7 +56,7 @@ function play(v) {
   updateCounts(sum, date);
   styleByDay(v);
 
-  range.max = 10; // change range.max
+  range.max = 10; // change range.max for number of days to show in slider
 
   // If range hit's the end show play button again
   if (parseInt(range.value) >= parseInt(range.max)) {
@@ -97,7 +97,8 @@ range.addEventListener('input', function() {
   play(parseInt(range.value, 10));
 });
 
-function loadBuildingStats(callback) {
+
+/*function loadBuildingStats(callback) {
   var xmlhttp;
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
@@ -107,7 +108,7 @@ function loadBuildingStats(callback) {
   }
   xmlhttp.open("GET", "mexico_buildings_by_day.json", true);
   xmlhttp.send();
-}
+}*/
 
 function clearPlayback() {
   window.clearInterval(playback);
